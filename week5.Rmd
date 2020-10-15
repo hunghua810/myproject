@@ -1,0 +1,115 @@
+---
+title: "week5"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 基本
+
+```{r}
+x<-3
+x1<-c(1,2,3)
+x2<-c(TRUE,FALSE,TRUE)
+```
+```{r}
+x
+```
+```{r}
+x1
+```
+```{r}
+x2
+```
+## 統計量
+
+c() 是一個函數，用來形成一個向量變數  
+mean():平均數  
+median():中位數  
+var():變異數  
+quantile():四分位數  
+sd():標準差  
+fivenum():五數概括  
+x<-runif():亂數均勻變數  
+length():向量長度  
+range():範圍  
+max():最大值  
+min():最小值  
+
+
+
+```{r}
+x<-c(2,3,4,6,7,4,3,2,9)
+mean(x)
+median(x)
+var(x)
+quantile(x)
+sd(x)
+fivenum(x)
+x<-runif(40)
+length(x)
+range(x)
+max(x)
+min(x)
+```
+
+##講義2.1,2.2,2.8
+
+```{r}
+a<-3
+a
+
+b<-sqrt(a*a+5)
+b
+
+ls()
+
+```
+
+```{r}
+a=TRUE
+typeof(a)
+
+b=FALSE
+typeof(b)
+
+```
+
+```{r}
+x <- 1:7
+
+x 
+y <- 2:-2
+
+y
+
+
+seq(1, 3, by=0.2)          # specify step size
+ 
+ seq(1, 5, length.out=4)    # specify length of the vecto
+
+
+```
+
+```{r}
+x<-c(1,2,3,4,5,6,7)
+x
+x[3]
+
+idx<-c(1,3,5,7)
+x
+x[idx]
+
+x[c(1,3,5,7)]
+x
+length(x[-7])
+```
+
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+---
+title: "home"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# week note
+
+[week 4](week4.Rmd)  
+[week 5](week5.html)
+
+
+
+
+
+
+
+
+
+
