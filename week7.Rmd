@@ -1,0 +1,22 @@
+---
+title: "week7"
+output: html_document
+---
+
+```{r}
+N <- 500
+metasample<-rnorm(N,5,2)
+
+bmu<-numeric(1000)
+for (i in 1:1000){
+  rndno<-as.integer(runif(N)*N)+1
+  smp<-metasample[rndno]
+  bmu[i]<-mean(smp)
+  
+}
+p<-density(bmu)
+plot(p)
+qq<-quantile(bmu)
+rug(qq,col = "red")
+
+```
