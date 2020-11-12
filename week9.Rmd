@@ -1,0 +1,67 @@
+---
+title: "week9"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+
+```{r}
+uu <-seq(0,1,length=100)
+uu <-uu[c(-1,-100)]
+z_scores <- qnorm(uu)
+pvalues <- pnorm(z_scores)
+plot(z_scores,pvalues,type = "l")
+    xlab= "z_scores"
+    ylab= "Probability"
+    xaxt="n"
+    main="CDF"
+    axis(1, at=which(round(pvalues,2) == 0.2),labels = round(qnorm(0.2),2))
+```
+
+```{r}
+uu <-seq(0,1,length=10)
+z_scores <- qnorm(uu)
+z_scores[3]<-NA
+which(z_scores==Inf)
+which(z_scores==-Inf)
+which(z_scores==NA)
+NA==NA
+is.na(z_scores)
+cleandta<-z_scores[which(!is.na(z_scores))]
+
+```
+
+```{r}
+x<-rpois(30,2)
+getevent<-function(v){
+  return(v[v%%2==0]  )
+}
+x
+getevent(x)
+
+```
+標準差站的信賴間，百分比
+zscore=1,1個標準差
+```{r}
+right<-pnorm(1)
+left<-pnorm(-1)
+right-left
+```
+
+```{r}
+right<-pnorm(2)
+left<-pnorm(-2)
+right-left
+```
+```{r}
+percentbysd<- function (sd){
+right<-pnorm(sd)
+left<-pnorm(-sd)
+return(right-left)
+
+
+}
+percentbysd(1)
+```
+
