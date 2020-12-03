@@ -1,0 +1,61 @@
+---
+title: "week12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+fert = c(10,20,20,50,10,20,10,50,20)
+fert = factor(fert,levels=c(10,20,50),ordered=TRUE)
+fert
+```
+```{r}
+levels(fert)
+```
+```{r}
+fert
+```
+```{r}
+typeof(fert)
+mean(fert)
+mean(as.numeric(levels(fert)[fert]))
+min(fert)
+```
+```{r}
+a <- factor(c("A", "A", "B", "A", "B", "B", "C", "A", "C"))
+class(a)
+typeof(a)
+a[1]
+```
+```{r}
+read.csv("trees91.csv")
+```
+```{r}
+mydata<-read.csv("trees91.csv")
+mydata$C<-factor(mydata$C)
+mydata$N<-factor(mydata$N)
+table(mydata$C)
+barplot(table(mydata$C))
+```
+
+```{r}
+mydata1<-read.csv("trees91x.csv",encoding="UTF-8")
+mydata$`中文`<-factor(mydata1$`中文`)
+table(mydata1$`中文`)
+```
+
+```{r}
+paste0("a","b") # "a"+"b" = "a`sep`b" ,sep=""
+paste0("a","b",collapse="--------")
+paste0(c("a","b"),c(1,2))
+paste0(c("a","b"),c(1,2),collapse = "<--->")
+print("----------")
+paste("a","b")  # "a"+"b" = "a`sep`b" ,sep=" "
+```
+-paste0 是paste的簡化版，paste裡面的參數sep預設為""
+
+-paste() ==paste( ,sep="")
+
