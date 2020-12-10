@@ -1,0 +1,67 @@
+---
+title: "week13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##practice
+
+```{r}
+dn<-data()
+str(dn)
+```
+```{r}
+attributes(dn)
+```
+## 寫一個函數，要知道我們的資料及是不是已經內建，
+
+```{r}
+dn$results
+```
+
+```{r}
+dimnames(dn$results)
+```
+
+```{r}
+class(dn$results)
+```
+```{r}
+dn$results[,3]
+```
+
+```{r}
+dimnames(dn$results)
+class(dn$results)
+dsname<-dn$results[,"Item"] #dsname
+head(dsname)
+```
+```{r}
+isDsExists<-function(given){
+
+  dn<-data()
+  dsname<-dn$results[,"Item"] # dsname<-dn4$results[,3]
+  rst<-length(dsname[dsname==given])
+  if(rst!=0){
+    return(T)
+  }
+  else{
+    return(F)
+  }
+}
+isDsExists("iris")
+
+
+```
+
+```{r}
+library(DT)
+#atatable(cars)
+ dn<-data()
+  dsname<-dn$results[,"Item"] # dsname<-dn4$results[,3]
+df<-data.frame(dsname)
+datatable(df)
+```
