@@ -1,0 +1,21 @@
+---
+title: "week15"
+output: html_document
+---
+
+```{r}
+ 
+Journals<-read.csv("Journals.csv")
+journals <-Journals[,c("subs","price")]
+journals$citeprice<-Journals$price/Journals$citations
+journals$lsubs<-log(journals$subs)
+journals$lciteprice<-log(journals$citeprice)
+
+
+plot(lsubs ~ lciteprice, data = journals)
+jour_lm <- lm(lsubs ~lciteprice, data = journals)
+abline(jour_lm)
+linearHypothesis(jour_lm, "lciteprice = -0.5")
+```
+ 
+
