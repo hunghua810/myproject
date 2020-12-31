@@ -1,0 +1,46 @@
+---
+title: "week16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+head(iris)
+levels(iris$Species)
+iris.lab = rep(c("1","2","3"),rep(50,3))
+par(mfrow=c(1,2))
+plot(iris[,1],iris[,3],type="n")      
+text(iris[,1],iris[,3],cex=0.6)       
+plot(iris[,1],iris[,3],type="n") 
+text(iris[,1],iris[,3],iris.lab,cex=0.7)  
+```
+```{r}
+par(mfrow=c(1,1)) 
+pairs(iris)
+par(mfrow=c(1,1)) 
+pairs(iris[,1:4])
+pairs(iris[1:4],pch=21,bg=iris.lab)
+pairs(iris[1:4],pch=21, bg=c("red", "green3", "blue")[unclass(iris$Species)])
+```
+```{r}
+data()
+data(ewr)
+boxplot(ewr[,3:10])
+names(ewr)[1]
+par(mfrow=c(2,4))    
+for(i in 3:10) boxplot(ewr[,i] ~ as.factor(ewr$inorout),main=names(ewr)[i])
+par(mfrow=c(1,1))    
+attach(InsectSprays)
+boxplot(count)
+boxplot(count~spray)
+```
+```{r}
+rr<-runif(1000)
+MS=read.csv("mathstat.csv",header = T)
+qqplot(MS$maths,rr)
+```
+
+
