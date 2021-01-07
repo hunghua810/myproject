@@ -1,0 +1,85 @@
+---
+title: "week17"
+output: html_document
+---
+
+```{r}
+pnorm(80,100,15)
+pnorm(120,100,15)
+pnorm(80,100,15)-pnorm(120,100,15)
+```
+
+```{r}
+x<-c(3.801895,5.214785,5.445979,4.293448,7.401404,4.156799,6.029400,3.982314,3.605331,4.707879,4.087529,4.635022,5.597247,3.889285,6.268631,
+6.304441,5.565396,5.380210,1.754372,5.449418)
+u.test<-function(x,mu,thegma)
+{  Se=thegma/sqrt(length(x))
+   u=(mean(x)-mu)/Se
+   p=pnorm(u)
+   list(u=u, p=p)
+}
+rst<-u.test(x,5,1)
+rst
+```
+```{r}
+m<-qnorm(0.975)
+x <- seq(-4, 4, length=100)
+hx <- dnorm(x)
+plot(x,hx,"l")
+rug(c(-m,rst$u,0,m))
+```
+
+```{r}
+u.test<-function(x,mu,thegma,alternative="twoside")
+{  Se=thegma/sqrt(length(x))
+   u <-(mean(x)-mu)/Se
+   p <-pnorm(u)
+   if(alternative=="twoside") p<-2*(1-pnorm(abs(u)))
+   else if (alternative=="less") p<-pnorm(u)
+   else p <- 1-pnorm(u)
+   list(u=u, p=p)
+}
+b=c(22,24,21,24,23,24,23,22,21,25)
+u.test(b, 25,2.4,"less")
+```
+```{r}
+x=c(502,496,510,508,506,498,512,497,515,503,510,506)
+t.test(x,mu=500,alternative ="greater")    
+```
+```{r}
+x1=c(24, 29, 39, 40, 32, 32, 31, 44, 37, 37, 50, 28, 24, 48, 25, 
+     40, 32, 34, 35, 41)
+x2=c(44, 34, 36, 38, 30, 30, 35, 38, 40, 46, 38, 35, 38, 36, 38, 
+     40, 34, 37, 40, 46)
+var.test(x1,x2)
+```
+```{r}
+x1=c(48,47,44,45,46,47,43,47,42,48)
+x2=c(36,45,47,38,39,42,36,42,46,35)
+var.test(x1,x2)
+```
+```{r}
+curve(dchisq(x, df = 10), from = 0, to = 40)
+```
+```{r}
+die.fair = sample(1:6,100,p=c(1,1,1,1,1,1)/6,rep=T)    # 均匀骰子
+die.bias = sample(1:6,100,p=c(.5,.5,1,1,1,2)/6,rep=T)  # 不均匀骰子
+res.fair = table(die.fair)
+res.bias = table(die.bias)
+count = rbind(res.fair,res.bias)
+chisq.test(count)
+ks.test(die.fair,die.bias) 
+```
+```{r}
+curve(dchisq(x, df = 10), from = 0, to = 40,
+main = 'Chi-Square Distribution (df = 10)',
+ylab = 'Density',
+lwd = 2)
+x_vector <- seq(10, 40)
+p_vector <- dchisq(x_vector, df = 10)
+polygon(x_vector, p_vector,
+        col = adjustcolor('red', alpha=0.3), border = NA)
+
+```
+
+
